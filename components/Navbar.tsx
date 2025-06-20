@@ -6,10 +6,9 @@ import { NAV_ITEMS } from "@/constants/constants";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   return (
     <nav
-      className="relative w-full shadow-lg"
+      className="fixed top-0 left-0 w-full z-50"
       style={{
         background:
           "linear-gradient(90deg, #A76D8F 0%, #FFBCA2 33%, #714DB5 66%, #321071 100%)",
