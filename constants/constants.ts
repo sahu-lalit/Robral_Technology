@@ -2,8 +2,8 @@ export const NAV_ITEMS = [
   { label: 'Home', href: '/' },
   { label: 'Solutions', href: '/solutions' },
   { label: 'Industries', href: '/industries' },
-  { label: 'Case Study', href: '/case-study' },
-  { label: 'About Us', href: '/about-us' },
+  { label: 'Case Study', href: '/CaseStudy' },
+  { label: 'About Us', href: '/AboutUs' },
 ];
 
 export const GRADIENT_COLORS = {

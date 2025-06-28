@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 
-const Footer1 = () => {
+const CaseStudy1 = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -19,32 +19,33 @@ const Footer1 = () => {
       [name]: value
     }))
   }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Handle form submission
     console.log('Form submitted:', formData)
   }
+
   return (
-    <>
-    <hr className='border-2 border-[#714DB5]'/>
-    <section className="relative min-h-screen flex items-center justify-center py-16 px-8 mx-10 my-20">
+    <section className="relative min-h-screen flex items-center justify-center py-35 px-8">
       {/* Background Image */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full z-0">
         <Image
-          src="/footerImage.png"
-          alt="Footer background"
+          src="/caseStudy.png"
+          alt="Case Study background"
           fill
-          className="object-cover rounded-2xl"
+          className="object-cover"
           priority
         />
       </div>
+
       {/* Overlay */}
-      <div className="absolute inset-0 bg-opacity-10 z-[1]" />      {/* Content Container */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#FFAC8B99] via-[#714DB599] to-[#5a3d9a99] z-[1]" />
+
+      {/* Content Container */}
       <div className="relative z-20 max-w-7xl w-full flex flex-col lg:flex-row items-center gap-8">
         
-        <div className="flex-1 hidden lg:block">
-        </div>
-
+        {/* Left Side - Contact Form */}
         <div className="flex-1 max-w-lg w-full">
           <div className="bg-[#714DB5] rounded-3xl p-8 shadow-2xl">
             {/* Header */}
@@ -124,18 +125,27 @@ const Footer1 = () => {
               <div className="pt-4">
                 <button
                   type="submit"
-                  className="w-full bg-[#FFAE8E] hover:bg-[#FFAE8E] text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  className="w-full bg-[#FFAE8E] hover:bg-[#FF9B7A] text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
-                  Send message
+                  Book A Call
                 </button>
               </div>
             </form>
           </div>
         </div>
+
+        {/* Right Side - Title */}
+        <div className="flex-1 text-center lg:text-right mt-40">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight">
+            OUR<br />
+            SOFTWARE<br />
+            DEVELOPMENT<br />
+            CASE STUDIES
+          </h1>
+        </div>
       </div>
     </section>
-    </>
   )
 }
 
-export default Footer1
+export default CaseStudy1

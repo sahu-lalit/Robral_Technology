@@ -1,17 +1,31 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { NAV_ITEMS } from "@/constants/constants";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <nav
-      className="fixed top-0 left-0 w-full z-50"
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? "backdrop-blur-md" : ""
+      }`}
       style={{
-        background:
-          "linear-gradient(90deg, #A76D8F 0%, #FFBCA2 33%, #714DB5 66%, #321071 100%)",
+        background: isScrolled
+          ? "linear-gradient(90deg, #A76D8F 0%, #FFBCA2 33%, #714DB5 66%, #321071 100%)"
+          : "transparent",
       }}
     >
       {" "}
@@ -91,7 +105,7 @@ const Navbar = () => {
       {/* Mobile menu */}
       {isMenuOpen && (
         <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/20 backdrop-blur-sm">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/30 backdrop-blur-sm">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.label}

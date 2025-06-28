@@ -33,7 +33,7 @@ const HomeComp1 = () => {
         }}
       />
       {/* Content Container */}
-      <div className="relative z-10 container mx-auto px-6 lg:px-12 py-12 h-full">
+      <div className="relative z-10 container mx-auto px-6 lg:px-12 py-25 h-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen">          {/* Left Content */}
           <div className="space-y-25">
             <h1 className="text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-tight whitespace-nowrap pl-10">

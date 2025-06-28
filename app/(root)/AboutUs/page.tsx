@@ -1,8 +1,13 @@
+import AboutMain from '@/components/AboutPageComponent/AboutMain'
+import HomeComp4 from '@/components/HomePageComponent/HomeComp/HomeComp4'
 import React from 'react'
 
 const AboutUs = () => {
   return (
-    <div>About Us</div>
+    <>
+    <AboutMain />
+    <HomeComp4 />
+    </>
   )
 }
 

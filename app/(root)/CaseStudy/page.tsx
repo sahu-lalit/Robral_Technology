@@ -1,8 +1,13 @@
+import CaseStudy1 from '@/components/CaseStudyComponent/CaseStudy1'
+import CaseStudy2 from '@/components/CaseStudyComponent/CaseStudy2'
 import React from 'react'
 
 const CaseStudy = () => {
   return (
-    <div>CaseStudy</div>
+    <>
+    <CaseStudy1 />
+    <CaseStudy2 />
+    </>
   )
 }
 
