@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import About2 from "./AboutComp/About2";
 import About1 from "./AboutComp/About1";

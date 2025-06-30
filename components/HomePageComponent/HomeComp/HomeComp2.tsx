@@ -1,8 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 
 const HomeComp2 = () => {
   const [expandedItem, setExpandedItem] = useState<number | null>(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const accordionItems = [
     {
@@ -37,77 +40,130 @@ const HomeComp2 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#714DB5] px-6 py-35 flex items-center justify-center">
-      <div className="max-w-6xl w-full">
-        {/* Header Section */}{" "}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 flex flex-col items-center">
-            <span className="whitespace-nowrap">
+    <div ref={ref} className="min-h-screen bg-[#714DB5] px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-35 flex items-center justify-center">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.3 }}
+        className="max-w-6xl w-full"
+      >
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="text-center mb-8 sm:mb-12"
+        >
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 flex flex-col items-center"
+          >
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.3, delay: 0.2 }}
+              className="sm:whitespace-nowrap"
+            >
               Cutting-Edge Software{" "}
               <span className="text-[#FFAE8E]">Solutions</span>
-            </span>
-            <span>for your Business</span>
-          </h1>{" "}
-          <p className="text-white/90 text-xl md:text-2xl leading-relaxed max-w-8xl mx-auto mt-20 text-justify">
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+            >
+              for your Business
+            </motion.span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="text-white/90 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-8xl mx-auto mt-8 sm:mt-12 lg:mt-20 text-justify px-2 sm:px-4"
+          >
             A seasoned software development company, we have built up competencies
             to empower a wide range of custom software development solutions to
             introduce automation into your business processes. Our expert team of
             certified engineers and developers employs a unique combination of
             trending technologies and components to create flexible, secure, and
             competitive digital products.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
         {/* Accordion Section */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 mt-25 border border-white/20">
-          <div className="space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="bg-white/10 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 mt-8 sm:mt-16 lg:mt-25 border border-white/20"
+        >
+          <div className="space-y-2 sm:space-y-4">
             {accordionItems.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
                 className="border-b border-white/20 last:border-b-0"
               >
-                <button
+                <motion.button
+                  whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
                   onClick={() => toggleItem(index)}
-                  className="w-full py-6 px-4 text-left flex items-center justify-between group hover:bg-white/5 rounded-lg transition-all duration-200"
+                  className="w-full py-4 sm:py-6 px-2 sm:px-4 text-left flex items-center justify-between group rounded-lg transition-all duration-200"
                 >
-                  <span className="text-white text-lg md:text-xl font-medium group-hover:text-orange-300 transition-colors">
+                  <motion.span className="text-white text-base sm:text-lg md:text-xl font-medium group-hover:text-orange-300 transition-colors pr-2">
                     {item.title}
-                  </span>
-                  <div className="flex-shrink-0 ml-4">
-                    <div
-                      className={`w-8 h-8 rounded-full border-2 border-white/60 flex items-center justify-center transition-all duration-300 ${
+                  </motion.span>
+                  <div className="flex-shrink-0 ml-2 sm:ml-4">
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white/60 flex items-center justify-center transition-all duration-300 ${
                         expandedItem === index
                           ? "bg-white/20 border-orange-300"
                           : "group-hover:border-orange-300"
                       }`}
                     >
-                      <span
-                        className={`text-white text-xl font-light transition-transform duration-300 ${
-                          expandedItem === index ? "rotate-45" : ""
-                        }`}
+                      <motion.span
+                        animate={{ rotate: expandedItem === index ? 45 : 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="text-white text-lg sm:text-xl font-light"
                       >
                         +
-                      </span>
-                    </div>
+                      </motion.span>
+                    </motion.div>
                   </div>
-                </button>
+                </motion.button>
 
                 {/* Expanded Content */}
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    expandedItem === index ? "max-h-96 pb-6" : "max-h-0"
-                  }`}
-                >
-                  <div className="px-4">
-                    <p className="text-white/90 text-base md:text-lg leading-relaxed">
-                      {item.content}
-                    </p>
-                  </div>
-                </div>
-              </div>
+                <AnimatePresence>
+                  {expandedItem === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <motion.div
+                        initial={{ y: -10, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.3, delay: 0.1 }}
+                        className="px-2 sm:px-4 pb-4 sm:pb-6"
+                      >
+                        <p className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed">
+                          {item.content}
+                        </p>
+                      </motion.div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             ))}
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
