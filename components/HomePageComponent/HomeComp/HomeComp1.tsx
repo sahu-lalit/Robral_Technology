@@ -17,12 +17,12 @@ const HomeComp1 = () => {
         className="object-cover"
         priority
       />{" "}
-      {/* Circular/Angular Gradient Overlay */}
+      {/* Full Screen Rotating Circular Gradient Overlay */}
       <div
-        className="absolute inset-0 z-[1] opacity-90"
+        className="absolute z-[1] opacity-90"
         style={{
           background: `conic-gradient(
-            from 160deg,
+            from 160deg at 50% 50%,
             #FFAC8B 0%,
             #D28CB7 20%,
             #a76d8f 35%,
@@ -35,6 +35,53 @@ const HomeComp1 = () => {
             #22254B 93%,
             #FFAC8B 100%
           )`,
+          animation: 'rotate-gradient 8s linear infinite',
+          width: '400vw',
+          height: '400vh',
+          left: '-150vw',
+          top: '-150vh',
+          transformOrigin: '50% 50%',
+        }}
+      />
+      
+      {/* Second full screen rotating gradient layer */}
+      <div
+        className="absolute z-[1] opacity-25"
+        style={{
+          background: `conic-gradient(
+            from 270deg at 50% 50%,
+            #FFAC8B 0%,
+            #22254B 25%,
+            #5e3387 50%,
+            #D28CB7 75%,
+            #FFAC8B 100%
+          )`,
+          animation: 'rotate-gradient 12s linear infinite reverse',
+          width: '400vw',
+          height: '400vh',
+          left: '-150vw',
+          top: '-150vh',
+          transformOrigin: '50% 50%',
+        }}
+      />
+      
+      {/* Additional gradient layer for extra coverage */}
+      <div
+        className="absolute z-[1] opacity-15"
+        style={{
+          background: `radial-gradient(
+            circle at 50% 50%,
+            #FFAC8B 0%,
+            #D28CB7 30%,
+            #5e3387 60%,
+            #22254B 100%
+          )`,
+          animation: 'rotate-gradient 15s linear infinite',
+          width: '500vw',
+          height: '500vh',
+          left: '-200vw',
+          top: '-200vh',
+          transformOrigin: '50% 50%',
         }}
       />
       {/* Content Container */}

@@ -99,3 +99,22 @@ html {
   scrollbar-width: auto;
   scrollbar-color: #714DB5 #f1f1f1;
 }
+
+/* Custom animations for rotating gradient */
+@keyframes rotate-gradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Additional utility classes for gradient rotation */
+.animate-spin-slow {
+  animation: rotate-gradient 8s linear infinite;
+}
+
+.animate-spin-slower {
+  animation: rotate-gradient 12s linear infinite;
+}
